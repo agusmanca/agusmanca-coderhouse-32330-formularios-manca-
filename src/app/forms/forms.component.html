@@ -1,0 +1,80 @@
+<div class="form-main-container">
+    <div><h3>Completa el siguiente formulario con tus datos:</h3></div>
+
+    <form class="form-style" [formGroup]="mainForm" (ngSubmit)="submit()">
+        <div class="grid-row-2c">
+            <div>
+                <mat-form-field >
+                    <mat-label>Nombre:</mat-label>
+                    <input matInput formControlName="nombre" placeholder="John">
+                </mat-form-field>
+            </div>
+            
+            <div>
+                <mat-form-field  >
+                    <mat-label>Apellido:</mat-label>
+                    <input matInput formControlName="apellido" placeholder="Doe">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="grid-row-2c">
+            <div>
+                <mat-form-field  >
+                    <mat-label>Email:</mat-label>
+                    <input matInput formControlName="email" placeholder="info@emai.com">
+                </mat-form-field>
+            </div>
+            
+            <div>
+                <mat-form-field >
+                    <mat-label>Telefono:</mat-label>
+                    <input matInput formControlName="telefono" placeholder="+543516854723">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="grid-row-2c">
+            <div>
+                <mat-form-field >
+                    <mat-label>Pais</mat-label>
+                    <mat-select formControlName="pais">
+                        <mat-option *ngFor="let p of paises" [value]="p">{{p}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field >
+                    <mat-label>Ciudad:</mat-label>
+                    <input matInput formControlName="ciudad" placeholder="C&oacute;rdoba">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="grid-colum-container">
+            <div class="grid-colum">
+                <mat-slide-toggle formControlName="vacuna">Tiene calendario de vacuna completo? *</mat-slide-toggle><br>
+                <small *ngIf="mainForm.get('vacuna')?.invalid && isSubmit" class="danger-class">* Debe seleccionar este campo.</small>
+            </div>
+            <div class="grid-colum">
+                <mat-slide-toggle formControlName="pasaporte">Posee pasaporte vigente para viajar? *</mat-slide-toggle><br>
+                <small *ngIf="mainForm.get('pasaporte')?.invalid && isSubmit" class="danger-class">* Debe seleccionar este campo.</small>
+            </div>
+            <div class="grid-colum">
+                <mat-slide-toggle formControlName="problema">Posee algun antecedente o impedimento para entrar en Qatar? *</mat-slide-toggle><br>
+                <small *ngIf="mainForm.get('problema')?.invalid && isSubmit" class="danger-class">* Debe seleccionar este campo.</small>
+            </div>
+        </div>
+
+        <div class="submit-class">
+            <div></div>
+            <div>
+                <button mat-raised-button type="submit" color="primary">Primary</button>
+            </div>
+        </div>
+    </form>
+
+    <div>
+        <h4>Los campos marcados con * son obligatorios.</h4>
+    </div>
+</div>
